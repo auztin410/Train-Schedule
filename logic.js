@@ -8,4 +8,10 @@ var config = {
   };
   firebase.initializeApp(config);
 
-  
+  var database = firebase.database();
+  var snap = snapshot.val();
+
+
+  database.ref().on("value", function(snapshot) {
+      console.log(snap);
+  })
