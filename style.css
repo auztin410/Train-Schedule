@@ -10,6 +10,10 @@ body {
 
     }
 
+    h2 {
+        text-align: center;
+    }
+
     div {
         background-color: gray;
         width: 80%;
@@ -31,3 +35,10 @@ body {
         background-color: white;
         
     }
+
+    input {
+        width: 400px;
+        margin-left: 10px;
+    }
+    
+    
