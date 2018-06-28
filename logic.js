@@ -9,11 +9,11 @@ var config = {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  var snap = snapshot.val();
+  
 
 
   database.ref().on("value", function(snapshot) {
-      console.log(snap);
+      console.log(snapshot.val());
   })
 
   $("#addTrainButton").on("click", function(event) {
@@ -38,5 +38,11 @@ var config = {
 
     console.log(childSnapshot.val());
 
-    
+    var trainName = childSnapshot.val().train;
+    var trainDestination = childSnapshot.val().destination;
+    var firstTrainTime = childSnapshot.val().start;
+    var trainFrequency = childSnapshot.val().frequency;
+
+    $("#trainTimes").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td></tr>");
+
   })
