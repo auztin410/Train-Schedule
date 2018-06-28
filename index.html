@@ -73,16 +73,24 @@
 
     <form action="">
 
-        Train Name: <br>
-        <input type="text" name="trainName"> <br>
-        Destination <br>
-        <input type="text" name="destination"> <br>
-        First Train Time (HH:mm - military time) <br>
-        <input type="text" name="firstTrainTime"> <br>
-        Frequency (mins) <br>
-        <input type="text" name="frequency"> <br>
+        <span> Name: </span>
         <br>
-        <input type="submit" value="Submit">
+        <input type="text" name="trainName" id="trainName">
+        <br>
+        <span>Destination: </span>
+        <br>
+        <input type="text" name="destination" id="trainDestination">
+        <br>
+        <span>First Train Time: (HH:mm - military time)</span>
+        <br>
+        <input type="text" name="firstTrainTime" id="firstTrainTime">
+        <br>
+        <span>Frequency: (mins)</span>
+        <br>
+        <input type="text" name="frequency" id="trainFrequency">
+        <br>
+        <br>
+        <input type="submit" value="Submit" id="addTrainButton">
 
     </form>
 

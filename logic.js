@@ -15,3 +15,28 @@ var config = {
   database.ref().on("value", function(snapshot) {
       console.log(snap);
   })
+
+  $("#addTrainButton").on("click", function(event) {
+      event.preventDefault();
+
+      var trainName = $("#trainName").val().trim();
+      var trainDestination = $("#trainDestination").val().trim();
+      var firstTrainTime = $("#firstTrainTime").val().trim();
+      var trainFrequency = $("#trainFrequency").val().trim();
+
+      var newTrain = {
+          train: trainName,
+          destination: trainDestination,
+          start: firstTrainTime,
+          frequency: trainFrequency
+      };
+
+      database.ref().push(newTrain);
+  })
+
+  database.ref().on("child_added", function(childSnapshot) {
+
+    console.log(childSnapshot.val());
+
+    
+  })
