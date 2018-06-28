@@ -13,22 +13,36 @@ var config = {
 
 
   database.ref().on("value", function(snapshot) {
-      console.log(snapshot.val());
+    //   console.log(snapshot.val());
   })
 
   $("#addTrainButton").on("click", function(event) {
       event.preventDefault();
 
+    
+
       var trainName = $("#trainName").val().trim();
       var trainDestination = $("#trainDestination").val().trim();
       var firstTrainTime = $("#firstTrainTime").val().trim();
       var trainFrequency = $("#trainFrequency").val().trim();
+      var firstTrainTimeConverted = moment(firstTrainTime, "HH:mm").subtract(1,"years");
+      var diffTime = moment().diff(moment(firstTrainTimeConverted), "minutes");
+      var timeRemaining = diffTime % trainFrequency;
+      var minuesUntilTrain = trainFrequency - timeRemaining;
+      var nextArrival = moment().add(minuesUntilTrain, "minutes")
+
+        console.log(timeRemaining);
+        console.log(minuesUntilTrain);
+        console.log(nextArrival);
+
 
       var newTrain = {
           train: trainName,
           destination: trainDestination,
           start: firstTrainTime,
           frequency: trainFrequency
+        //   arrival: nextArrival,
+        //   maway: minuesUntilTrain
       };
 
       database.ref().push(newTrain);
@@ -36,7 +50,7 @@ var config = {
 
   database.ref().on("child_added", function(childSnapshot) {
 
-    console.log(childSnapshot.val());
+    // console.log(childSnapshot.val());
 
     var trainName = childSnapshot.val().train;
     var trainDestination = childSnapshot.val().destination;
